@@ -46,7 +46,7 @@ export async function getStats() {
   return {
     total: total.rows[0].c as number,
     withDescription: withDesc.rows[0].c as number,
-    sources: sources.rows[0] as { skillsmp: number; skillsh: number; clawhub: number },
+    sources: sources.rows[0] as unknown as { skillsmp: number; skillsh: number; clawhub: number },
   };
 }
 
@@ -56,7 +56,7 @@ export async function getCategories() {
     WHERE category IS NOT NULL AND category != ''
     GROUP BY category ORDER BY count DESC
   `);
-  return result.rows as { category: string; count: number }[];
+  return result.rows as unknown as { category: string; count: number }[];
 }
 
 type SearchFilters = {
