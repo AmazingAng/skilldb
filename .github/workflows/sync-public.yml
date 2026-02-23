@@ -1,0 +1,49 @@
+name: Sync data files to public repo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skilldb.json'
+      - 'skills-frontmatter.json'
+      - 'README.md'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout skilldb-dev
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          path: dev
+
+      - name: Checkout skilldb (public)
+        uses: actions/checkout@v4
+        with:
+          repository: AmazingAng/skilldb
+          token: ${{ secrets.PUBLIC_REPO_PAT }}
+          lfs: true
+          path: public
+
+      - name: Copy changed files
+        run: |
+          for f in skilldb.json skills-frontmatter.json README.md; do
+            if [ -f "dev/$f" ]; then
+              cp "dev/$f" "public/$f"
+              echo "Copied $f"
+            fi
+          done
+
+      - name: Commit and push
+        working-directory: public
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skilldb.json skills-frontmatter.json README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "sync: update data files from skilldb-dev"
+            git push
+          fi
