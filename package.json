@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d4c635075a5aa9d3b470d9a8bde07dea2218e6de0c8197bcfb70f2db61295b2
-size 362
+{
+  "name": "skilldb",
+  "version": "1.0.0",
+  "description": "Multi-platform Agent Skill aggregation and archive.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "better-sqlite3": "^12.6.2"
+  }
+}
