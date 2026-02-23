@@ -46,7 +46,7 @@ export async function getStats() {
   return {
     total: total.rows[0].c as number,
     withDescription: withDesc.rows[0].c as number,
-    sources: sources.rows[0] as { skillsmp: number; skillsh: number; clawhub: number },
+    sources: sources.rows[0] as unknown as { skillsmp: number; skillsh: number; clawhub: number },
   };
 }
 
