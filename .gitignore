@@ -1,10 +1,12 @@
 node_modules/
 .env.local
+.env
 .DS_Store
 *.db
 *.db-shm
 *.db-wal
 .next/
-scripts/
 clawhub-skills-repo/
 skills_download_*/
+.vercel/
+.gitignore.public
