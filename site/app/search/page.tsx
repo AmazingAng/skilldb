@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { Suspense, useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Skill } from "@/app/lib/db";
 
@@ -31,6 +31,14 @@ const CATEGORIES = [
 const SOURCES = ["skillsmp", "skillsh", "clawhub"];
 
 export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-[var(--color-term-dim)] text-xs">loading...</div>}>
+      <SearchContent />
+    </Suspense>
+  );
+}
+
+function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
