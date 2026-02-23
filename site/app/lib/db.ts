@@ -56,7 +56,7 @@ export async function getCategories() {
     WHERE category IS NOT NULL AND category != ''
     GROUP BY category ORDER BY count DESC
   `);
-  return result.rows as { category: string; count: number }[];
+  return result.rows as unknown as { category: string; count: number }[];
 }
 
 type SearchFilters = {
