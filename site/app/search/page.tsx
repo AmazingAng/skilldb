@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Skill } from "@/app/lib/db";
 
@@ -31,6 +31,29 @@ const CATEGORIES = [
 const SOURCES = ["skillsmp", "skillsh", "clawhub"];
 
 export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchFallback />}>
+      <SearchContent />
+    </Suspense>
+  );
+}
+
+function SearchFallback() {
+  return (
+    <main className="min-h-screen">
+      <div className="mx-auto max-w-4xl px-4 py-8">
+        <div className="flex items-baseline gap-4 mb-6">
+          <a href="/" className="text-[var(--color-term-dim)] hover:text-[var(--color-foreground)]">~</a>
+          <span className="text-[var(--color-term-dim)]">/</span>
+          <span className="text-[var(--color-term-green)]">search</span>
+        </div>
+        <div className="text-xs text-[var(--color-term-dim)]">loading...</div>
+      </div>
+    </main>
+  );
+}
+
+function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
