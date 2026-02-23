@@ -1,4 +1,4 @@
-# Skill Archive
+# skilldb
 
 Multi-platform Agent Skill aggregation and archive.
 
@@ -10,7 +10,7 @@ Multi-platform Agent Skill aggregation and archive.
 | skills.sh | ~22K | https://skills.sh |
 | ClawHub | ~11K | https://clawhub.ai |
 
-## skill-archive.json
+## skilldb.json
 
 Unified, deduplicated index of **180,587 skills** merged from all three platforms.
 

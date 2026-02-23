@@ -2,5 +2,9 @@ node_modules/
 .env.local
 .DS_Store
 *.db
+*.db-shm
+*.db-wal
+.next/
+scripts/
 clawhub-skills-repo/
 skills_download_*/

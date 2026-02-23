@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0a0a;
+  --color-foreground: #d4d4d4;
+  --color-term-green: #00ff41;
+  --color-term-dim: #555;
+  --color-term-cyan: #00d4ff;
+  --color-term-border: #222;
+  --font-mono: "SF Mono", "Fira Code", "JetBrains Mono", "Cascadia Code", Menlo, Monaco, "Courier New", monospace;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+::selection {
+  background: #00ff4130;
+}
+
+input, select {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
